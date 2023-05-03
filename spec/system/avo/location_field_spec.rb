@@ -53,7 +53,7 @@ RSpec.describe "LocationField", type: :system do
 
     context "show" do
       it "renders a map" do
-        Avo::Fields::LocationField::ShowComponent.any_instance.stub(:js_map).and_return("map_content_here")
+        allow_any_instance_of(Avo::Fields::LocationField::ShowComponent).to receive(:js_map).and_return("map_content_here")
         visit "/admin/resources/cities/#{city.id}"
 
         expect(page).to have_text("map_content_here")
